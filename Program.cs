@@ -16,14 +16,16 @@ app.MapGet("/users", async (HttpRequest request) =>
     await using var connection =
         new SqlConnection(connectionString);
 
+string query =
+    "SELECT * FROM Users WHERE Username = '" + username;
     
-    string query =
-    "SELECT * FROM Users WHERE Username = @Username";
+//     string query =
+//     "SELECT * FROM Users WHERE Username = @Username";
 
-await using var command =
-    new SqlCommand(query, connection);
+// await using var command =
+//     new SqlCommand(query, connection);
 
-command.Parameters.AddWithValue("@Username", username);
+// command.Parameters.AddWithValue("@Username", username);
 
     await connection.OpenAsync();
 
