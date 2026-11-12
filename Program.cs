@@ -29,6 +29,7 @@ string query =
 
     await connection.OpenAsync();
 
+    await using var command = new SqlCommand(query, connection);
     await using var reader = await command.ExecuteReaderAsync();
 
     return Results.Ok(reader.HasRows);
