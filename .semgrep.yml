@@ -1,0 +1,12 @@
+
+rules:
+  - id: csharp-sql-query-concatenation
+    languages:
+      - csharp
+    message: Possible SQL injection - SQL query uses string concatenation.
+    severity: WARNING
+    metadata:
+      category: security
+      cwe: "CWE-89"
+    pattern: |
+      string $QUERY = "SELECT * FROM Users WHERE Username = '" + $INPUT;
