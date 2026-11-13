@@ -35,4 +35,15 @@ string query =
     return Results.Ok(reader.HasRows);
 });
 
+
+app.MapGet("/hash", (string input) =>
+{
+    using var md5 = System.Security.Cryptography.MD5.Create();
+
+    byte[] hash = md5.ComputeHash(
+        System.Text.Encoding.UTF8.GetBytes(input));
+
+    return Results.Ok(Convert.ToHexString(hash));
+});
+
 app.Run();
