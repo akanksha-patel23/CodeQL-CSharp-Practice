@@ -1,7 +1,11 @@
 
 using System;
 using System.IO;
+using System.Net.Http;
+using System.Threading.Tasks;
 
+namespace CodeQLCSharpPractice
+{
 public static class SecurityExamples
 {
     // Example 1: Hardcoded credential
@@ -29,4 +33,19 @@ public static class SecurityExamples
 
         return File.ReadAllText(filePath);
     }
+    // Example 4: Clear-text HTTP
+        public static async Task<string> InsecureHttp()
+        {
+            using var client = new HttpClient();
+
+            return await client.GetStringAsync(
+                "http://example.com");
+        }
+
+        // Example 5: Weak cryptographic key
+        public static byte[] WeakKey()
+        {
+            return new byte[8];
+        }
+}
 }

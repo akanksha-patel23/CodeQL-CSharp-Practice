@@ -65,4 +65,20 @@ app.MapGet("/file", (string fileName) =>
 app.MapGet("/greeting", (string name) =>
     Results.Content($"<h1>Hello, {name}</h1>", "text/html"));
 
-app.Run();
+
+app.MapGet("/cookie", (HttpContext context) =>
+{
+    context.Response.Cookies.Append(
+        "session",
+        "practice-value",
+        new CookieOptions
+        {
+            HttpOnly = false,
+            Secure = false
+        });
+
+    return Results.Ok("Cookie created");
+});
+
+//app.Run();
+await app.RunAsync();
