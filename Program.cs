@@ -54,13 +54,13 @@ var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
 app.MapGet("/credential", () =>
-    Results.Ok(SecurityExamples.GetCredential()));
+    Results.Ok(CodeQLCSharpPractice.SecurityExamples.GetCredential()));
 
 app.MapGet("/token", () =>
-    Results.Ok(SecurityExamples.GenerateToken()));
+    Results.Ok(CodeQLCSharpPractice.SecurityExamples.GenerateToken()));
 
 app.MapGet("/file", (string fileName) =>
-    Results.Ok(SecurityExamples.ReadFile(fileName)));
+    Results.Ok(CodeQLCSharpPractice.SecurityExamples.ReadFile(fileName)));
 
 app.MapGet("/greeting", (string name) =>
     Results.Content($"<h1>Hello, {name}</h1>", "text/html"));
